@@ -3,18 +3,20 @@ import Button from './Button'
 
 export default function AddFriendForm({ onAddFriend }) {
   const [name, setName] = useState('')
-  const [image, setImage] = useState('https://i.pravatar.cc/48')
+  const [image, setImage] = useState('')
 
   function handleSubmit(e) {
     e.preventDefault()
 
     if (!name || !image) return
 
-    const id = crypto.randomUUID()
+    const id = Math.floor(Math.random() * 100000)
+    // console.log(id)
+
     const newFriend = {
       id,
       name,
-      image: `${image}?=${id}`,
+      image,
       balance: 0
     }
 
